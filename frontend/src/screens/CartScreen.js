@@ -67,7 +67,7 @@ const CartScreen = () => {
           </div>
 
 
-          <Button style={{ marginLeft: "20%" }} variant="contained">Proceed To Checkout</Button>
+          <Button style={{ marginLeft: "21%" ,marginBottom:20}} variant="contained">Proceed To Checkout</Button>
 
         </div>
       </div>
