@@ -11,10 +11,10 @@ import Backdrop from "./components/Backdrop";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
+import Login from "./components/Login";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
-
   return (
     <Router>
       <Navbar click={() => setSideToggle(true)} />
@@ -25,6 +25,7 @@ function App() {
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/product/:id" component={ProductScreen} />
           <Route exact path="/cart" component={CartScreen} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </main>
     </Router>

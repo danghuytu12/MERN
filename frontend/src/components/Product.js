@@ -1,6 +1,7 @@
 import "./Product.css";
 import { Link } from "react-router-dom";
-
+import Button from '@mui/material/Button';
+import NumberFormat from 'react-number-format';
 const Product = ({ imageUrl, description, price, name, productId }) => {
   return (
     <div className="product">
@@ -11,10 +12,15 @@ const Product = ({ imageUrl, description, price, name, productId }) => {
 
         <p className="info__description">{description.substring(0, 100)}...</p>
 
-        <p className="info__price">${price}</p>
+        <p className="info__price">
+        Giá sản phẩm: 
+          <NumberFormat value={price} displayType={'text'} thousandSeparator={true} prefix={'đ '} />
+        </p>
 
         <Link to={`/product/${productId}`} className="info__button">
-          View
+          <Button style={{ marginLeft: 105 ,marginTop:15}} variant="contained">
+            View
+          </Button>
         </Link>
       </div>
     </div>

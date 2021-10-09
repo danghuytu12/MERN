@@ -2,10 +2,10 @@ import "./CartScreen.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import NumberFormat from 'react-number-format';
 // Components
 import CartItem from "../components/CartItem";
-
+import Button from '@mui/material/Button';
 // Actions
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
@@ -15,7 +15,7 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const qtyChangeHandler = (id, qty) => {
     dispatch(addToCart(id, qty));
@@ -32,7 +32,7 @@ const CartScreen = () => {
   const getCartSubTotal = () => {
     return cartItems
       .reduce((price, item) => price + item.price * item.qty, 0)
-      .toFixed(2);
+
   };
 
   return (
@@ -60,11 +60,15 @@ const CartScreen = () => {
         <div className="cartscreen__right">
           <div className="cartscreen__info">
             <p>Subtotal ({getCartCount()}) items</p>
-            <p>${getCartSubTotal()}</p>
+            <p style={{ marginLeft: 120, fontSize: 22, fontWeight: "bold" }}>
+
+              <NumberFormat value={getCartSubTotal()} displayType={'text'} thousandSeparator={true} prefix={'đ '} />
+            </p>
           </div>
-          <div>
-            <button>Proceed To Checkout</button>
-          </div>
+
+
+          <Button style={{ marginLeft: "20%" }} variant="contained">Proceed To Checkout</Button>
+
         </div>
       </div>
     </>

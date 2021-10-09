@@ -1,8 +1,9 @@
 import "./ProductScreen.css";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import Button from '@mui/material/Button';
 // Actions
+import NumberFormat from 'react-number-format';
 import { getProductDetails } from "../redux/actions/productActions";
 import { addToCart } from "../redux/actions/cartActions";
 
@@ -38,7 +39,7 @@ const ProductScreen = ({ match, history }) => {
             </div>
             <div className="left__info">
               <p className="left__name">{product.name}</p>
-              <p>Price: ${product.price}</p>
+                  <p>Price: <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'đ '} /></p>
               <p>Description: {product.description}</p>
             </div>
           </div>
@@ -46,7 +47,7 @@ const ProductScreen = ({ match, history }) => {
             <div className="right__info">
               <p>
                 Price:
-                <span>${product.price}</span>
+                    <span><NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'đ '} /></span>
               </p>
               <p>
                 Status:
@@ -64,11 +65,10 @@ const ProductScreen = ({ match, history }) => {
                   ))}
                 </select>
               </p>
-              <p>
-                <button type="button" onClick={addToCartHandler}>
-                  Add To Cart
-                </button>
-              </p>
+              
+
+                <Button style={{marginLeft:60,marginTop:10,padding:10,marginBottom:10}} variant="outlined" onClick={addToCartHandler}>Add To Cart</Button>
+              
             </div>
           </div>
         </>

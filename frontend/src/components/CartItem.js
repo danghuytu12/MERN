@@ -1,6 +1,6 @@
 import "./CartItem.css";
 import { Link } from "react-router-dom";
-
+import NumberFormat from 'react-number-format';
 const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
   return (
     <div className="cartitem">
@@ -10,7 +10,9 @@ const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
       <Link to={`/product/${item.product}`} className="cartItem__name">
         <p>{item.name}</p>
       </Link>
-      <p className="cartitem__price">${item.price}</p>
+      <p className="cartitem__price">
+        <NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+      </p>
       <select
         value={item.qty}
         onChange={(e) => qtyChangeHandler(item.product, e.target.value)}
